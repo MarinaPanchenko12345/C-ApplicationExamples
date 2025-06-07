@@ -10,7 +10,9 @@ namespace WinFormsApp1.Repositories // Declaring the namespace for repositories
 {
     public class ClientRepository // Declaring the ClientRepository class
     {
-        private readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=winformdb;Integrated Security=True;TrustServerCertificate=True;";
+        private readonly string connectionString =
+    "Data Source=MARINAIGOR\\SQLEXPRESS;Initial Catalog=MyTrainingDB;Integrated Security=True;TrustServerCertificate=True;";
+
         // Connection string for the database
 
         /// <summary>
