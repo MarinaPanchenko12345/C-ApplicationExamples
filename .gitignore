@@ -1,0 +1,12 @@
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+*.opendb
+
+# Build results
+bin/
+obj/
+
+# Other
+*.db

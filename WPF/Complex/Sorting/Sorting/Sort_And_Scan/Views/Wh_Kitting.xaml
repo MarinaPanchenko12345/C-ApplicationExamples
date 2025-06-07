@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="Sort_And_Scan.Views.Wh_Kitting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sort_And_Scan.Views"
+             mc:Ignorable="d" 
+            d:DesignHeight="890" d:DesignWidth="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}">
+    <UserControl.Resources>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="{Binding RowColor}"/>
+            <Setter Property="Foreground" Value="{Binding ForeColor}"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top"  Margin="550,-100,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top"  >
+                <DataGrid x:Name="Grid5" BorderBrush="#FF31577E" ItemsSource="{Binding}" BorderThickness="1"  RowHeight="35" Width="900" CanUserSortColumns="False" CanUserAddRows="False" AutoGenerateColumns="False"  Height="550" FontSize="20" VirtualizingPanel.IsVirtualizing="False" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" GridLinesVisibility="All" Margin="290,270,0,0" Background="White" >
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" Value="#FF31577E"/>
+                            <Setter Property="BorderThickness" Value="1 1 1 1"/>
+                            <Setter Property="Margin" Value="-1,-1,0,0" />
+                            <Setter Property="Height" Value="28" />
+                            <Setter Property="Width" Value="auto"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="200" IsReadOnly="True"  />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="150" IsReadOnly="True"  />
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" Width="200" IsReadOnly="True"  />
+                        <DataGridTextColumn Header="Lot" Binding="{Binding Lot}" Width="200" IsReadOnly="True"  />
+                       
+                        <DataGridTextColumn Header="Package" Binding="{Binding Package}" Width="*" IsReadOnly="True"  />
+                        <!--<DataGridTemplateColumn Header="Clear" Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="Clear" Width="60" IsEnabled="{Binding IsEnabled,Mode=TwoWay}" Height="36" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,0,0" Click="Clear_Click">
+                                            <Image Source="\Resources\icons8-minus-50.png" Height="28" Width="35"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,50,0,0">
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="0,0,0,0">
+                <TextBlock Text="Insert PL" FontSize="30" Width="Auto" Margin="40,0,0,0" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black"/>
+                <TextBox x:Name="PlTxt"  Width="166" Background="White" BorderThickness="1" Margin="25,0,0,0" VerticalAlignment="Center"  Text="" FontSize="30" BorderBrush="Black" TextChanged="PlTxt_TextChanged"  Foreground="Black"/>
+            </StackPanel>
+
+            <StackPanel  Margin="0,0,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <TextBlock Text="Insert SKID" FontSize="30" Width="Auto" Margin="170,0,0,0" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black"/>
+                    <TextBox x:Name="Lot_Txt" Width="300" MaxLength="11" Background="White" BorderThickness="1" Margin="10,0,0,0" VerticalAlignment="Center"   FontSize="30" BorderBrush="Black" KeyUp="Lot_Txt_KeyUp"  AcceptsTab="True"   Foreground="Black"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="300,0,0,0" >
+                <TextBlock Text="PN" FontSize="30" Width="Auto" Margin="0,0,0,0" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black"/>
+                <TextBox  x:Name="Component_Txt" Width="300"  Background="White" BorderThickness="1" Margin="10,0,0,0" VerticalAlignment="Center"   FontSize="30" BorderBrush="Black" KeyUp="Component_Txt_KeyUp"  AcceptsTab="True"   Foreground="Black"/>
+              
+
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="50,0,0,0" >
+
+                <Button x:Name="plBtn" Background="White" Click="plBtn_Click">
+                    <Image Source="\Resources\History.png" Stretch="Fill" Width="40" Height="20"/>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,-110,0,0" Height="700">
+            <StackPanel x:Name="DetailsSP" Orientation="Vertical" Margin="0,20,0,0" HorizontalAlignment="Left" >
+                <Border Width="820" Height="96" >
+                    
+                    </Border>
+                    <Border Width="850" Height="550" BorderThickness="1" BorderBrush="#FF31577E" Margin="0,-0,0,0">
+                        <StackPanel Margin="0,-0,0,0">
+                        <Border x:Name="PickLocation_Border" Width="820" Height="120" BorderThickness="1" Margin="0,30,0,0" BorderBrush="#FF31577E">
+                            <TextBlock x:Name="PN_Txt" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="60" FontWeight="Bold"/>
+                        </Border>
+                        <Border x:Name="LotBrd"  Width="820" Height="120"  BorderThickness="1"  Margin="0,30,0,0" BorderBrush="#FF31577E">
+                            <TextBlock x:Name="Lot_Txt2" Text="" FontSize="60" HorizontalAlignment="Center"  VerticalAlignment="Center"  Foreground="Black"  FontWeight="Bold"/>
+                        </Border>
+                        <Border x:Name="First_Border" Width="820" Height="120"  BorderThickness="1" Margin="0,30,0,0" VerticalAlignment="Top" BorderBrush="#FF31577E">
+                                <TextBlock x:Name="First_Txt" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="60" FontWeight="Bold"/>
+                            </Border>
+                        
+
+                    </StackPanel>
+                    </Border>
+                </StackPanel>
+        </StackPanel>
+
+
+
+
+        <Button x:Name="Save" Content="Save"   Width="135" Height="56" FontSize="20" Click="Save_Click"  Background="#FF2D829E" BorderBrush="{x:Null}" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,5" />
+        
+    </Grid>
+</UserControl>
