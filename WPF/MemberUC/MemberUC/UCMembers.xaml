@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="MemberUC.UCMembers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MemberUC"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="200">
+    <Grid>
+        <Rectangle Height="60" Width="200" RadiusX="10.75" RadiusY="10.75" Fill="#FFA5A3A3"  />
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Height="40" Width="40" RadiusX="50" RadiusY="50" Margin="10,0,0,0" Fill="Black"/>
+
+
+            <StackPanel>
+                <Label Content="{Binding Title}" Width="139" Height="30" FontSize="14"/>
+                <Label Content="{Binding SubTitle}" Width="139" Height="30" Margin="0,-13,0,0" FontSize="8" Foreground="#FF545353"/>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>
